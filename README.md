@@ -4,12 +4,14 @@ Tests about future DM CSS
 
 
 * [x] External config
-* [x] PostCSS
-* [] FlexBox Grid
-* [] CSS Guidelines + linter
+* [x] Configure PostCSS
+* [x] CSS linter
+* [x] CSS Comb Guidelines
+* [x] Configure SASS to handle the grid
+* [x] FlexBox Grid
+
 * [] CSS units ? (vh, vw, %, em, rem, px, pt..)
-* [] Handle RTL / LTR
-* [] Adding a linter to avoid hacks like important
+* [] Handle RTL / LTR => NEW Swat
 
 
 
@@ -22,5 +24,4 @@ Current issues :
 - Resume of the CSS
 
 
-
-http://flexboxgrid.com/
+Result : 11ko minified for the new Dailymotion grid.

@@ -1,0 +1,37 @@
+// Create CSS4 Colors
+:root {
+  @each $name, $color in $colors
+  {
+    --#{$name}: $color;
+  }
+}
+
+// body
+// {
+//     background-color: var(--dm-brand-light);
+// }
+
+.box, .box-first, .box-large, .box-nested, .box-row {
+    position: relative;
+    box-sizing: border-box;
+    height:30px;
+    margin-bottom: 0;
+    background: #007FFF;
+    border: 1px solid #FFF;
+    border-radius: 2px;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+}
+
+.page-section
+{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+}
+
+h2
+{
+    margin:30px 0;
+}

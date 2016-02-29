@@ -1,0 +1,123 @@
+// Grid
+$breakpoints : map-get($grid,'breakpoints');
+
+/// Get the datas of a breakpoint (size and gutter)
+/// @param {String} $breakpoint-name [false] - Name of the breakpoint
+/// @example scss
+/// breakpoint(md)
+@function breakpoint($breakpoint-name : false)
+{
+    @if $breakpoint-name == false
+    {
+        @error 'You must add a parameter to the breakpoint function.';
+    }
+    @else if not map-has-key($breakpoints, $breakpoint-name)
+    {
+        @error 'Unknown breakpoint parameter `#{$breakpoint-name}`.';
+    }
+    @else
+    {
+        @return map-get($breakpoints, $breakpoint-name);
+    }
+}
+
+
+@function get-media-query-value($value)
+{
+    @if map-has-key($breakpoints, $value)
+    {
+        @return map-get(breakpoint($value),'size');
+    }
+
+    @return $value;
+}
+
+/// @param {string} $min [false] - Name of the min breakpoint
+/// @param {string} $max [false] - Name of the max breakpoint
+@mixin media-query($min:false, $max:false)
+{
+    $media : '';
+
+    @if $min != false
+    {
+        $media : $media + ' and (min-width: ' + (get-media-query-value($min) + 1px) + ')';
+    }
+
+    @if $max != false
+    {
+        $media : $media + ' and (max-width: ' + get-media-query-value($max) + ')';
+    }
+
+    @if $media != ''
+    {
+        @media screen #{$media} { @content; }
+    }
+}
+
+.row {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+[class^='col']
+{
+    box-sizing: border-box;
+    flex: 0 0 auto;
+}
+
+.col
+{
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+}
+
+// Create responsive cols (sm, md, lg..)
+@each $name, $properties in $breakpoints
+{
+    $min : if(map-get($properties, 'size') != null, $name,false);
+    $gutterWidth: map-get(map-get($breakpoints, $name),'gutter');
+
+    @for $i from 1 through map-get($grid,'columns')
+    {
+        @include media-query($min)
+        {
+            .col-#{"" + $name}-#{"" + $i}
+            {
+                $value : $i / map-get($grid,'columns') * 100%;
+
+                flex-basis: $value;
+                max-width: $value;
+            }
+        }
+    }
+
+    @include media-query($min)
+    {
+        .row
+        {
+            margin-left:-$gutterWidth;
+            margin-right:-$gutterWidth;
+        }
+
+        // Each columns adapt on gutter
+        [class^='col']
+        {
+            padding-left:$gutterWidth;
+            padding-right:$gutterWidth;
+        }
+
+        .reverse-#{"" + $name} { flex-direction: row-reverse; }
+        .center-#{"" + $name} { justify-content: center; }
+        .start-#{"" + $name} { justify-content: flex-start; }
+        .end-#{"" + $name} { justify-content: flex-end; }
+        .top-#{"" + $name} { align-items: flex-start; }
+        .middle-#{"" + $name} { align-items: center; }
+        .bottom-#{"" + $name} { align-items: flex-end; }
+        .first-#{"" + $name} { order: -1; }
+        .last-#{"" + $name} { order: 1; }
+    }
+}

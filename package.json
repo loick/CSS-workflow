@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "start" : "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors --harmony",
-    "reset" : "rm -rf node_modules/jsontosass-loader/ && npm install && npm start"
+    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot --progress --colors --harmony",
+    "reset": "rm -rf node_modules/jsontosass-loader/ && npm install && npm start"
   },
   "author": "loick le digabel",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "extract-text-webpack-plugin": "0.9.1",
     "file-loader": "^0.8.5",
     "http-server": "~0.8.0",
-    "jsontosass-loader": "../jsontosass-loader",
+    "jsontosass-loader": "https://github.com/loick/jsontosass-loader",
     "loader-utils": "^0.2.12",
     "node-sass": "^3.4.2",
     "postcss-cssnext": "^2.4.0",

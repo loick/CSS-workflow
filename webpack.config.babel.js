@@ -26,7 +26,7 @@ const conf = {
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css!postcss!sass!jsontosass?vars=' + encodeURIComponent(JSON.stringify(variables)))
+                loader: ExtractTextPlugin.extract('style', 'css!csslint!postcss!sass!jsontosass?vars=' + encodeURIComponent(JSON.stringify(variables)))
             },
             { test: /\.png$/, loader: "url-loader?limit=100000" },
             { test: /\.jpg$/, loader: "file-loader" },

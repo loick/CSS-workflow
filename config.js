@@ -6,19 +6,25 @@ export const vars = {
         'trending-wtw'   : '#00BFBF',
     },
     grid : {
-        'nb-columns'      : 12,
-        // Mobile
-        'bk-xs'        : '0px',
-        'gutter-xs'    : '10px',
-        // Tablet
-        'bk-sm'        : '760px',
-        'gutter-sm'    : '10px',
-        // Desktop
-        'bk-md'        : '980px',
-        'gutter-md'    : '10px',
-        // TV
-        'bk-lg'        : '1380px',
-        'gutter-lg'    : '10px',
+        'columns'      : 12,
+        'breakpoints'  : {
+            'xs' : {
+                'size'  : '0px',
+                'gutter' : '10px',
+            },
+            'sm' : {
+                'size'  : '760px',
+                'gutter' : '10px',
+            },
+            'md' : {
+                'size'  : '980px',
+                'gutter' : '10px',
+            },
+            'lg' : {
+                'size'  : '1380px',
+                'gutter' : '20px',
+            },
+        }
     }
 }
 
