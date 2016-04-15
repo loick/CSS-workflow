@@ -1,6 +1,6 @@
 # GUILD CSS
 
-Tests about future DM CSS
+Tests about CSS
 
 
 * [x] External config
@@ -24,4 +24,4 @@ Current issues :
 - Resume of the CSS
 
 
-Result : 11ko minified for the new Dailymotion grid.
+Result : 11ko minified for the new grid.
